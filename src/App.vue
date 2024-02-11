@@ -1,52 +1,62 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import Greet from "./components/Greet.vue";
+import Nav from './components/Nav.vue'
+import ExperimentHistory from './components/ExperimentHistory.vue'
+import CommandCenter from './components/CommandCenter.vue'
+import CommandHistory from './components/CommandHistory.vue'
+import EnvironmentPanel from './components/EnvironmentPanel.vue';
+
 </script>
 
 <template>
-  <div class="container">
-    <h1>Welcome to Tauri!</h1>
+  <div class="dark main-panel">
+    <section class="dark:bg-zinc-900 dark:text-zinc-200 flex flex-col h-screen px-10 gap-5">
+      <Nav/>
 
-    <div class="row">
-      <a href="https://vitejs.dev" target="_blank">
-        <img src="/vite.svg" class="logo vite" alt="Vite logo" />
-      </a>
-      <a href="https://tauri.app" target="_blank">
-        <img src="/tauri.svg" class="logo tauri" alt="Tauri logo" />
-      </a>
-      <a href="https://vuejs.org/" target="_blank">
-        <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-      </a>
-    </div>
+      <section class="flex gap-5">
+      <section class="flex flex-col gap-5">
+        <ExperimentHistory />
+        <a href="/new" class="hover:bg-blue-400 dark:hover:bg-blue-500 dark:bg-blue-600 group flex items-center rounded-sm  bg-blue-500 text-white text-sm font-medium pl-2 pr-3 py-2 shadow-sm">
+            <img width="20" height="20" class="mr-2" src="./assets/chartLine.svg">
+            View Live Experiment Data
+          </a>
+          <section class="drop-shadow-md bg-zinc-200 dark:bg-zinc-700 rounded-sm min-w-80 max-w-xs">
+            <h2 class="font-medium p-5 dark:border-zinc-600">System Health</h2>
+            <section class="max-h-80 overflow-auto">
+              <section class="flex px-2 py-2 gap-2 items-center border-t-[1px] dark:border-zinc-600">
+                <img width="30" height="30" src="./assets/successDialog.svg">
+                <p class="font-medium">LEDs Health</p>
+              </section>
+              <section class="flex px-2 py-2 gap-2 items-center border-t-[1px] dark:border-zinc-600">
+                <img width="30" height="30" src="./assets/successDialog.svg">
+                <p class="font-medium">Pump Health</p>
+              </section>
+              <section class="flex px-2 py-2 gap-2 items-center border-t-[1px] dark:border-zinc-600">
+                <img width="30" height="30" src="./assets/successDialog.svg">
+                <p class="font-medium">Heater Health</p>
+              </section>
+              <section class="flex px-2 py-2 gap-2 items-center border-t-[1px] dark:border-zinc-600">
+                <img width="30" height="30" src="./assets/successDialog.svg">
+                <p class="font-medium">Voltage Regulator Health</p>
+              </section>
+            </section>
 
-    <p>Click on the Tauri, Vite, and Vue logos to learn more.</p>
-
-    <p>
-      Recommended IDE setup:
-      <a href="https://code.visualstudio.com/" target="_blank">VS Code</a>
-      +
-      <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-      +
-      <a href="https://github.com/tauri-apps/tauri-vscode" target="_blank"
-        >Tauri</a
-      >
-      +
-      <a href="https://github.com/rust-lang/rust-analyzer" target="_blank"
-        >rust-analyzer</a
-      >
-    </p>
-
-    <Greet />
+          </section>
+        </section>
+        <EnvironmentPanel />
+        <section class="flex flex-col gap-5">
+        <CommandCenter />
+        <CommandHistory />
+        </section>
+        </section>
+    </section>
   </div>
 </template>
 
 <style scoped>
-.logo.vite:hover {
-  filter: drop-shadow(0 0 2em #747bff);
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+.main-panel {
+  font-family: "Segoe UI", sans-serif;
 }
 
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #249b73);
-}
 </style>

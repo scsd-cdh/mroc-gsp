@@ -37,8 +37,9 @@
         "fullscreen": false,
         "resizable": true,
         "title": "mroc-gsp",
-        "width": 800,
-        "height": 600
+        "width": 1280,
+        "height": 720,
+        "maximized": true
       }
     ]
   }

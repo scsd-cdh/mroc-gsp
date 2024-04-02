@@ -1,62 +1,82 @@
 <script setup lang="ts">
 import Nav from './components/Nav.vue'
-import ExperimentHistory from './components/ExperimentHistory.vue'
-import CommandCenter from './components/CommandCenter.vue'
-import CommandHistory from './components/CommandHistory.vue'
-import EnvironmentPanel from './components/EnvironmentPanel.vue';
+import EnvironmentPanel from "./components/EnvironmentPanel.vue";
+import SensorData from "./components/SensorData.vue";
+import Settings from "./components/Settings.vue";
 
 </script>
 
 <template>
-  <div class="dark main-panel">
-    <section class="dark:bg-zinc-900 dark:text-zinc-200 flex flex-col h-screen px-10 gap-5">
+  <div class="main-panel bg-neutral-50">
+    <section class="flex flex-col h-screen px-5 gap-5">
       <Nav/>
+      <div class="flex gap-5">
+        <div class="flex flex-col justify-between">
+          <Settings/>
+          <ul class="text-sm self-center">
+            <li class="flex flex-row items-center relative mb-7">
+              <div class="w-[2px] h-[1.5em] bg-neutral-200 absolute left-0.5 top-6"></div>
+              <div class="w-[1.5em] h-[1.5em] left-[-0.5em] rounded-full absolute">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#4f46e5" aria-hidden="true" class="oc se ayg">
+                  <circle r="5" cx="12" cy="12" fill="rgb(212 212 212)" />
+                </svg>
+              </div>
+              <p class="ml-5">
+                Idle
+              </p>
+            </li>
+            <li class="flex flex-row items-center relative mb-7">
+              <div class="w-[2px] h-[1.5em] bg-neutral-200 absolute left-0.5 top-6"></div>
+              <div class="w-[1.5em] h-[1.5em] left-[-0.5em] rounded-full absolute">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#4f46e5" aria-hidden="true" class="oc se ayg"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd"></path></svg>
+              </div>
+              <p class="ml-5 text-neutral-300 cursor-pointer">
+                Preparation
+              </p>
+            </li>
+            <li class="flex flex-row items-center relative mb-7">
+              <div class="w-[2px] h-[1.5em] bg-neutral-200 absolute left-0.5 top-6"></div>
+              <div class="w-[1.5em] h-[1.5em] left-[-0.5em] rounded-full absolute">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#4f46e5" aria-hidden="true" class="oc se ayg"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd"></path></svg>
+              </div>
+              <p class="ml-5 text-neutral-300">
+                Activation
+              </p>
+            </li>
+            <li class="flex flex-row items-center relative mb-7">
+              <div class="w-[2px] h-[1.5em] bg-neutral-200 absolute left-0.5 top-6"></div>
+              <div class="w-[1.5em] h-[1.5em] left-[-0.5em] rounded-full absolute">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#4f46e5" aria-hidden="true" class="oc se ayg"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd"></path></svg>
+              </div>
+              <p class="ml-5 text-neutral-300">
+                Growth
+              </p>
+            </li>
+            <li class="flex flex-row items-center relative mb-7">
+              <div class="w-[1.5em] h-[1.5em] left-[-0.5em] rounded-full absolute">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#4f46e5" aria-hidden="true" class="oc se ayg"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd"></path></svg>
+              </div>
+              <p class="ml-5 text-neutral-300">
+                Optogenetic Induction
+              </p>
+            </li>
+          </ul>
+          <div></div>
+        </div>
 
-      <section class="flex gap-5">
-      <section class="flex flex-col gap-5">
-        <ExperimentHistory />
-        <a href="/new" class="hover:bg-blue-400 dark:hover:bg-blue-500 dark:bg-blue-600 group flex items-center rounded-sm  bg-blue-500 text-white text-sm font-medium pl-2 pr-3 py-2 shadow-sm">
-            <img width="20" height="20" class="mr-2" src="./assets/chartLine.svg">
-            View Live Experiment Data
-          </a>
-          <section class="drop-shadow-md bg-zinc-200 dark:bg-zinc-700 rounded-sm min-w-80 max-w-xs">
-            <h2 class="font-medium p-5 dark:border-zinc-600">System Health</h2>
-            <section class="max-h-80 overflow-auto">
-              <section class="flex px-2 py-2 gap-2 items-center border-t-[1px] dark:border-zinc-600">
-                <img width="30" height="30" src="./assets/successDialog.svg">
-                <p class="font-medium">LEDs Health</p>
-              </section>
-              <section class="flex px-2 py-2 gap-2 items-center border-t-[1px] dark:border-zinc-600">
-                <img width="30" height="30" src="./assets/successDialog.svg">
-                <p class="font-medium">Pump Health</p>
-              </section>
-              <section class="flex px-2 py-2 gap-2 items-center border-t-[1px] dark:border-zinc-600">
-                <img width="30" height="30" src="./assets/successDialog.svg">
-                <p class="font-medium">Heater Health</p>
-              </section>
-              <section class="flex px-2 py-2 gap-2 items-center border-t-[1px] dark:border-zinc-600">
-                <img width="30" height="30" src="./assets/successDialog.svg">
-                <p class="font-medium">Voltage Regulator Health</p>
-              </section>
-            </section>
-
-          </section>
-        </section>
-        <EnvironmentPanel />
-        <section class="flex flex-col gap-5">
-        <CommandCenter />
-        <CommandHistory />
-        </section>
-        </section>
+        <SensorData/>
+        <EnvironmentPanel/>
+      </div>
     </section>
   </div>
 </template>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 .main-panel {
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 </style>

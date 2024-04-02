@@ -43,10 +43,10 @@ onUnmounted(() => {
 
 
 <template>
-  <div class="select-none relative mt-2" @click.stop="toggleOptions">
-    <button class="relative w-full cursor-default rounded-sm bg-white dark:bg-zinc-700 py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-zinc-600 sm:text-sm sm:leading-6" aria-haspopup="listbox">
+  <div class="select-none relative" @click.stop="toggleOptions">
+    <button class="relative w-full cursor-pointer rounded-md bg-white dark:bg-zinc-700 py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-zinc-600 sm:text-sm sm:leading-6" aria-haspopup="listbox">
       <span class="flex items-center">
-        <span class="ml-3 block truncate">{{ selectedValue }}</span>
+        <span class="block truncate">{{ selectedValue }}</span>
       </span>
       <span class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
         <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

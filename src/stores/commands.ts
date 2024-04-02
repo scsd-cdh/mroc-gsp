@@ -278,7 +278,7 @@ export const fetchEnvironmentInformation = async(port: string): EnvironmentInfor
 }
 
 interface PhotosensorResults {
-	value: float[]	
+	value: number[]
 }
 
 export interface TelecommandAcknowledge {

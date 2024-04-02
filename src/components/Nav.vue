@@ -45,53 +45,7 @@ onMounted(async () => {
 
 <template>
   <section class="grid grid-cols-3 items-center">
-    <section>
-      <p class="text-2xl">
-        {{ currentTime }}
-      </p>
-      <span class="mr-5">
-        {{ currentDay }}
-      </span>
-      <span class="border-l-[1px] border-zinc-500 pl-2">
-        {{ currentDate }}
-      </span>
-    </section>
-    <section class="self-start bg-zinc-200 dark:bg-zinc-700 py-2 px-5 rounded-b-lg drop-shadow-lg text-center min-w-80">
-    <template v-if="systemStatus == null">
-      <span class="text-zinc-300">Waiting for connection...</span>
-    </template>
-    <template v-else>
-      <h2 class="text-xs text-zinc-300 font-medium">
-        Firmware v{{ systemStatus.firmwareVersion }}
-      </h2>
-      <h2 class="text-lg font-medium">
-        {{ getCapsuleStateName(systemStatus.state) }} MODE
-      </h2>
-      <p>
-        {{ formatUptime(systemStatus.uptimeSeconds) }}
-      </p>
-    </template>
-    </section>
-    <section class="flex justify-end gap-5">
-      <img @click="settingsOpen = true" alt="Gear" class="cursor-pointer" width="25" height="25" src="../assets/gear.svg">
-      <img
-      v-show="portsStore.fetchDataIntervalId === null"
-        @click="portsStore.connect()"
-        class="cursor-pointer"
-        alt="Connection Status"
-        width="25"
-        height="25"
-        src="../assets/disconnectedSerial_dark.svg">
-      <img
-        v-show="portsStore.fetchDataIntervalId !== null"
-        @click="portsStore.disconnect()"
-        class="cursor-pointer"
-        alt="Connection Status"
-        width="25"
-        height="25"
-        src="../assets/connectedSerial_dark.svg">
-    </section>
-    <Settings :value="settingsOpen" @update:value="(val) => settingsOpen = val" />
+
   </section>
 </template>
 

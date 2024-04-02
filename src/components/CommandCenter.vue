@@ -4,10 +4,15 @@ import {
   CMD_TEST_SYSTEM_HEALTH,
   CMD_SET_STATE_IDLE,
   CMD_RESET,
-  fetchExperimentStatus
+  fetchExperimentStatus,
+  CapsuleState
 } from '../stores/commands.ts'
+import { ref } from 'vue';
 import { useSerialStore } from '../stores/useSerialStore'
+import SelectMenu from "./SelectMenu.vue";
 const portsStore = useSerialStore()
+const experimentPhases = ['Idle', 'Preparation', 'Activation', 'Growth', 'Optogenetic Induction']
+const experimentPhaseSelected =  ref('Idle')
 
 </script>
 
@@ -18,30 +23,30 @@ const portsStore = useSerialStore()
   </section>
   <section class="flex flex-col gap-2 p-2">
     <button
+        @click="portsStore.setIdle()"
+        class="hover:bg-blue-400 dark:hover:bg-blue-500 dark:bg-blue-600 group flex items-center rounded-sm bg-blue-500 text-white text-sm font-medium pl-2 pr-3 py-2 shadow-sm">
+      <img alt="" width="20" height="20" class="mr-2" src="../assets/exclMark.svg">
+      Set Idle State
+    </button>
+    <button
     @click="portsStore.sendCommand(CMD_NEXT_EXPERIMENT_PHASE)"
     class="hover:bg-blue-400 dark:hover:bg-blue-500 dark:bg-blue-600 group flex items-center rounded-sm  bg-blue-500 text-white text-sm font-medium pl-2 pr-3 py-2 shadow-sm">
       <img alt="" width="20" height="20" class="mr-2" src="../assets/SetNextStatement(RiderLight).svg">
       Next Experiment Phase
     </button>
-    <button class="hover:bg-blue-400 dark:hover:bg-blue-500 dark:bg-blue-600 group flex items-center rounded-sm bg-blue-500 text-white text-sm font-medium pl-2 pr-3 py-2 shadow-sm">
-      <img alt="" width="20" height="20" class="mr-2" src="../assets/threadRunning.svg">
-      Run Experiment Phase
-    </button>
-    <button class="hover:bg-blue-400 dark:hover:bg-blue-500 dark:bg-blue-600 group flex items-center rounded-sm bg-blue-500 text-white text-sm font-medium pl-2 pr-3 py-2 shadow-sm">
-      <img alt="" width="20" height="20" class="mr-2" src="../assets/intentionBulb.svg">
-      Customize LED Pattern
-    </button>
+    <div class="flex gap-2">
+      <SelectMenu class="flex-1" v-model="experimentPhaseSelected" :options="experimentPhases"/>
+      <button
+          @click="portsStore.sendCommand(CMD_TEST_SYSTEM_HEALTH)"
+          class="hover:bg-blue-400 dark:hover:bg-blue-500 dark:bg-blue-600 group flex items-center rounded-sm bg-blue-500 text-white text-sm font-medium px-2 shadow-sm">
+        <img alt="" width="20" height="20" src="../assets/threadRunning.svg">
+      </button>
+    </div>
     <button
-    @click="portsStore.sendCommand(CMD_TEST_SYSTEM_HEALTH)"
-    class="hover:bg-blue-400 dark:hover:bg-blue-500 dark:bg-blue-600 group flex items-center rounded-sm bg-blue-500 text-white text-sm font-medium pl-2 pr-3 py-2 shadow-sm">
+        @click="portsStore.sendCommand(CMD_TEST_SYSTEM_HEALTH)"
+        class="hover:bg-blue-400 dark:hover:bg-blue-500 dark:bg-blue-600 group flex items-center rounded-sm bg-blue-500 text-white text-sm font-medium pl-2 pr-3 py-2 shadow-sm">
       <img alt="" width="20" height="20" class="mr-2" src="../assets/springBootHealth.svg">
       Test System Health
-    </button>
-    <button
-    @click="portsStore.setIdle()"
-    class="hover:bg-blue-400 dark:hover:bg-blue-500 dark:bg-blue-600 group flex items-center rounded-sm bg-blue-500 text-white text-sm font-medium pl-2 pr-3 py-2 shadow-sm">
-      <img alt="" width="20" height="20" class="mr-2" src="../assets/exclMark.svg">
-      Set Idle State
     </button>
     <button
     @click="portsStore.sendCommand(CMD_RESET)"
